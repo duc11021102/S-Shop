@@ -7,7 +7,7 @@ const CartItem = (props) => {
             </Image>
         </div>
         <div className="ml-8 w-60 ">
-            <h1 className="font-bold text-slate-800">{props.title}</h1>
+            <h1 className="font-bold text-slate-800">{props.title.substring(0, 20)}</h1>
             <p className="text-neutral-300">{props.category}</p>
             {props.color === 'green' ? <div className="w-5 h-5 mt-4 rounded-full bg-green-500"></div> : <div className="w-5 h-5 mt-4 rounded-full bg-blue-500"></div>}
         </div>

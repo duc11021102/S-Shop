@@ -5,7 +5,7 @@ const LightIcon = () => {
             width="19"
             height="19"
             fill="currentColor"
-            className="bi bi-brightness-high-fill"
+            className="bi bi-brightness-high-fill "
             viewBox="0 0 16 16"
         >
             {" "}

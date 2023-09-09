@@ -1,16 +1,17 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useContext } from "react";
 import CartContext from "@/store/cart-context";
+import { toast } from 'react-toastify';
 const FormCheckout = (props) => {
     const cartCtx = useContext(CartContext);
     const [fullName, setFullName] = useState("");
     const [address, setAddress] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     let numberItems = cartCtx.amountItems;
-    let cost = cartCtx.amount;
+    let cost = +cartCtx.amount + 23.0;
 
-    const submitHandler = () => {
+    const submitHandler = useCallback(() => {
         cartCtx.addOrder({
             fullname: fullName,
             address: address,
@@ -18,8 +19,9 @@ const FormCheckout = (props) => {
             products: numberItems,
             costs: cost,
         });
+        toast("Order placed Successfully")
         cartCtx.clearItem();
-    };
+    }, [address, cartCtx, fullName, phoneNumber, numberItems, cost])
     return (
         <form className="col-span-6">
             <h1 className="text-slate-800 text-xl font-semibold mb-6">

@@ -1,16 +1,17 @@
 import CartItem from "./CartItem";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import CartContext from "@/store/cart-context";
 import { toast } from 'react-toastify';
 const CartList = () => {
     const cartCtx = useContext(CartContext);
-    const onAddHandler = (item) => {
-        cartCtx.addItem({ ...item, amount: 1 });
+    const onAddHandler = useCallback((item) => {
+        cartCtx.addItem({ ...item, amount: 1 })
         toast('Item added to cart');
-    }
-    const onRemoveHandler = (item) => {
+    }, [cartCtx])
+    const onRemoveHandler = useCallback((item) => {
         cartCtx.deleteItem(item);
-    }
+    }, [cartCtx]);
+
     return (
         <ul className="h-10 col-span-8">
             {cartCtx.items.map((item) =>

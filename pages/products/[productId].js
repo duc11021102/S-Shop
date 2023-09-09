@@ -11,16 +11,19 @@ const ProductDetail = (props) => {
     const [color, setColor] = useState("green");
     const [amount, setAmount] = useState("1");
 
-    const priceFloat = parseFloat(props.product.price);
-    const price = priceFloat.toFixed(2);
+    const { id, title, price, image, description, category } = props.product;
+
+    const priceFloat = parseFloat(price);
+    const cost = priceFloat.toFixed(2);
+
     const addToCartHandler = (e) => {
         e.preventDefault();
         cartCtx.addItem({
-            id: props.product.id,
-            title: props.product.title,
-            category: props.product.category,
-            price: props.product.price,
-            image: props.product.image,
+            id: id,
+            title: title,
+            category: category,
+            price: cost,
+            image: image,
             color: color,
             amount: +amount,
         });
@@ -41,22 +44,22 @@ const ProductDetail = (props) => {
                 <div className=" ">
                     <Image
                         alt="imgProduct"
-                        src={props.product.image}
+                        src={image}
                         width={1000}
                         height={1000}
                         className="w-80 rounded-lg align-element object-cover"
                     ></Image>
                 </div>
                 <div className="">
-                    <h1 className="text-3xl font-bold">{props.product.title}</h1>
+                    <h1 className="text-3xl font-bold">{title}</h1>
                     <h4 className="text-base font-bold text-neutral-300 mt-2">
-                        {props.product.category}
+                        {category}
                     </h4>
                     <div>
-                        <p className="text-2xl mt-3">${props.product.price}</p>
+                        <p className="text-2xl mt-3">${cost}</p>
                     </div>
                     <div>
-                        <p className="mt-5 text-lg">{props.product.description}</p>
+                        <p className="mt-5 text-lg">{description}</p>
                     </div>
                     <div>
                         <h4 className="mt-4 text-base font-bold">Color</h4>
@@ -129,7 +132,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
     const productId = context.params.productId;
-    // const { params } = context;
     const response = await fetch(
         `https://fakestoreapi.com/products/${productId}`
     ).catch((error) => {

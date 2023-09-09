@@ -2,14 +2,9 @@ import CartContext from "@/store/cart-context";
 import { useContext } from "react";
 import FormBid from "@/components/CartComponents/FormBid";
 import FormCheckout from "@/components/CheckoutComponents/FormCheckout";
-import { useRouter } from "next/router";
 
 const Checkout = () => {
-    const router = useRouter();
     const cartCtx = useContext(CartContext);
-    // const informationFormHandler = (fullName, address, phoneNumber) => {
-    //     router.push('/orders');
-    // }1
     return (
         <section className="align-item py-20 mx-60">
             <div>

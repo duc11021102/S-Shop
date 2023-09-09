@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const FormCheckbox = (props) => {
-    const onChangeHandler = (e) => {
+    const onChangeHandler = useCallback((e) => {
         props.onValue(e.target.checked);
-    }
+    }, [props]);
     return (
         <div className="flex flex-col items-center">
             <label className="font-normal text-sm text-center">{props.label}</label>

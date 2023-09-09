@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useCallback } from "react";
 const FormSelect = (props) => {
-    const onChangeHandler = (e) => {
+    const onChangeHandler = useCallback((e) => {
         props.onValue(e.target.value);
-    };
+    }, [props])
     return (
         <div className="flex flex-col">
             <label className="font-normal text-sm ">{props.label}</label>

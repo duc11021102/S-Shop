@@ -19,7 +19,7 @@ const ProductsList = (props) => {
                             alt="prod0"
                         />
                         <h3 className="text-xl font-semibold w-full ml-6"> {prod.title}</h3>
-                        <p className="text-xl font-medium mr-3">${prod.price}</p>
+                        <p className="text-xl font-medium mr-3 text-purple-800">${prod.price}</p>
                     </Link>
                 ))}
             </div>

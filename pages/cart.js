@@ -3,9 +3,10 @@ import FormBid from "@/components/CartComponents/FormBid";
 import CartContext from "@/store/cart-context";
 import { useContext } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 const Cart = () => {
     const cartCtx = useContext(CartContext);
-
+    const { status } = useSession();
     return (
         <section className="align-item py-20 mx-60">
             <div>
@@ -18,12 +19,22 @@ const Cart = () => {
                 {cartCtx.items.length > 0 && (
                     <div className="flex flex-col gap-4 col-span-4">
                         <FormBid></FormBid>
-                        <Link
-                            href="/checkout"
-                            className="bg-slate-800 w-full text-center text-white rounded-lg px-5 py-3 hover:bg-slate-600 ease-linear duration-300"
-                        >
-                            PROCEED TO CHECKOUT
-                        </Link>
+
+                        {status === "authenticated" ? (
+                            <Link
+                                href="/checkout"
+                                className="bg-slate-800 w-full text-center text-white rounded-lg px-5 py-3 hover:bg-slate-600 ease-linear duration-300"
+                            >
+                                PROCEED TO CHECKOUT
+                            </Link>
+                        ) : (
+                            <Link
+                                href="/auth/login"
+                                className="bg-slate-800 w-full text-center text-white rounded-lg px-5 py-3 hover:bg-slate-600 ease-linear duration-300"
+                            >
+                                PLEASE LOGIN
+                            </Link>
+                        )}
                     </div>
                 )}
             </div>

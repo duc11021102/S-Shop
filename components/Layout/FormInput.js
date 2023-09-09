@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const FormInput = (props) => {
 
-    const onChangeHandler = (event) => {
+    const onChangeHandler = useCallback((event) => {
         props.onValue(event.target.value);
-    }
+    }, [props]);
     return (
         <div className="flex flex-col">
             <label className="font-normal text-sm">{props.name}</label>

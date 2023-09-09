@@ -19,7 +19,7 @@ const Section1 = () => {
         </div>
       </div>
 
-      <div className="bg-slate-800 rounded-lg p-5 object-cover  ">
+      <div className="bg-slate-800 rounded-lg p-5 object-cover">
         <Image
           width={1000}
           height={1000}

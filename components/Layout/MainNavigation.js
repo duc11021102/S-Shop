@@ -3,13 +3,13 @@ import Navlink from "./NavLink";
 import CartIcon from "./CartIcon";
 import DarkIcon from "./ModeIcon/Dark";
 import LightIcon from "./ModeIcon/Light";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 const MainNavigation = () => {
   const [mode, setMode] = useState(true);
 
-  const onModeHandler = () => {
+  const onModeHandler = useCallback(() => {
     setMode(!mode);
-  };
+  }, [mode]);
   return (
     <nav className="w-full bg-neutral-200">
       <div className="flex justify-between w-7xl mx-5 py-3">
@@ -21,11 +21,11 @@ const MainNavigation = () => {
         </div>
         <div className="flex gap-3 ">
           <div className="text-slate-800 mt-4" onClick={onModeHandler}>
-            <div href="">{mode ? <LightIcon /> : <DarkIcon />}</div>
+            <div >{mode ? <LightIcon /> : <DarkIcon />}</div>
           </div>
 
           <div className="text-slate-800 w-11 h-11 mt-1 hover:bg-slate-800 hover:text-white p-2 rounded-full ease-linear duration-300">
-            <Link href="/">
+            <Link href="/cart">
               <CartIcon />
             </Link>
           </div>

@@ -25,12 +25,6 @@ const FormBid = () => {
                     <span className="font-bold">${`${+amount + 5.0 + 18.0}`}</span>
                 </div>
             </div>
-            {/* <Link
-                href="/checkout"
-                className="bg-slate-800 w-full text-center text-white rounded-lg px-5 py-3 hover:bg-slate-600"
-            >
-                PROCEED TO CHECKOUT
-            </Link> */}
         </div>
     );
 };

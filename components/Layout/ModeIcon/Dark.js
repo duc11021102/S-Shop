@@ -5,7 +5,7 @@ const DarkIcon = () => {
             width="19"
             height="19"
             fill="currentColor"
-            className="bi bi-moon-fill"
+            className="bi bi-moon-fill "
             viewBox="0 0 16 16"
         >
             {" "}
